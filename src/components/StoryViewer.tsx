@@ -135,6 +135,13 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
         currentIndex={currentImageIndex}
         progress={progress}
       />
+
+      <div className="absolute top-4 left-2 right-0 z-30 pointer-events-none px-4">
+        <h2 className="text-white font-semibold text-base">
+          {story.restaurantName}
+        </h2>
+      </div>
+
       {currentMedia.type === "image" ? (
         <DishStoryImage url={currentMedia.url} alt="Dish" />
       ) : (
