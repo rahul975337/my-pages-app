@@ -173,7 +173,8 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
   if (!currentMedia) return null;
   return (
     <div
-      className="w-full h-screen bg-black overflow-hidden relative"
+      className="w-full bg-black overflow-hidden relative"
+      style={{ height: "100dvh" }}
       onClick={handleClick}
     >
       <ProgressIndicator
@@ -243,9 +244,15 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({
         />
       )}
 
-      <div className="absolute bottom-0 left-0 right-0 z-30 pointer-events-none">
+      <div
+        className="absolute bottom-0 left-0 right-0 z-30 pointer-events-none flex justify-center"
+        style={{
+          paddingBottom: `calc(env(safe-area-inset-bottom, 0px) + 20px)`,
+          paddingTop: "8px",
+        }}
+      >
         <button
-          className="pointer-events-auto h-9 w-full bg-black text-white font-semibold py-4 rounded-t-2xl flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors shadow-lg"
+          className="pointer-events-auto w-[80vw] bg-black text-white font-semibold py-4 px-4 rounded-2xl flex items-center justify-center gap-2 hover:bg-gray-100 transition-colors shadow-lg min-h-[56px]"
           onClick={(e) => {
             e.stopPropagation();
             handleAddToCart();
