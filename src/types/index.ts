@@ -23,11 +23,13 @@ export interface MediaItem {
   url: string;
   hotspots: Hotspot[];
   duration?: number;
+  dishName?: string;
 }
 
 export interface Story {
   id: string;
   restaurantName: string;
+  basePrice: number;
   media: MediaItem[];
 }
 
@@ -39,6 +41,7 @@ export interface Customization {
 
 export interface CartItem {
   dishId: string;
+  dishName?: string;
   storyId: string;
   customizations: Customization[];
   basePrice: number;

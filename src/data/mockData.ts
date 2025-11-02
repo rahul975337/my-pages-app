@@ -57,11 +57,13 @@ export const mockStories: Story[] = [
   {
     id: "story1",
     restaurantName: "Tasty Bites",
+    basePrice: 12.99,
     media: [
       {
         id: "media1",
         type: "image",
         url: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800",
+        dishName: "Butter Chicken",
         hotspots: [
           { id: "1", ingredientId: "ing1", x: 30, y: 40 },
           { id: "2", ingredientId: "ing2", x: 60, y: 50 },
@@ -72,6 +74,7 @@ export const mockStories: Story[] = [
         id: "media2",
         type: "image",
         url: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800",
+        dishName: "Margherita Pizza",
         hotspots: [
           { id: "1", ingredientId: "ing4", x: 50, y: 45 },
           { id: "2", ingredientId: "ing5", x: 35, y: 60 },
@@ -88,11 +91,13 @@ export const mockStories: Story[] = [
   {
     id: "story2",
     restaurantName: "Spice Garden",
+    basePrice: 14.99,
     media: [
       {
         id: "media4",
         type: "image",
         url: "https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=800",
+        dishName: "Tandoori Chicken",
         hotspots: [
           { id: "1", ingredientId: "ing2", x: 40, y: 50 },
           { id: "2", ingredientId: "ing4", x: 65, y: 55 },
@@ -102,6 +107,7 @@ export const mockStories: Story[] = [
         id: "media5",
         type: "image",
         url: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800",
+        dishName: "Chicken Tikka",
         hotspots: [
           { id: "1", ingredientId: "ing1", x: 50, y: 45 },
           { id: "2", ingredientId: "ing3", x: 35, y: 60 },
@@ -112,11 +118,13 @@ export const mockStories: Story[] = [
   {
     id: "story3",
     restaurantName: "Pizza Palace",
+    basePrice: 9.99,
     media: [
       {
         id: "media6",
         type: "image",
         url: "https://images.unsplash.com/photo-1574071318508-1cdbab80d002?w=800",
+        dishName: "Pepperoni Pizza",
         hotspots: [
           { id: "1", ingredientId: "ing4", x: 40, y: 50 },
           { id: "2", ingredientId: "ing5", x: 60, y: 45 },
@@ -126,6 +134,7 @@ export const mockStories: Story[] = [
         id: "media7",
         type: "image",
         url: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?w=800",
+        dishName: "Veggie Pizza",
         hotspots: [{ id: "1", ingredientId: "ing2", x: 45, y: 55 }],
       },
     ],
@@ -133,11 +142,13 @@ export const mockStories: Story[] = [
   {
     id: "story4",
     restaurantName: "Burger Hub",
+    basePrice: 8.99,
     media: [
       {
         id: "media8",
         type: "image",
         url: "https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=800",
+        dishName: "Classic Burger",
         hotspots: [
           { id: "1", ingredientId: "ing1", x: 50, y: 50 },
           { id: "2", ingredientId: "ing4", x: 30, y: 60 },
@@ -148,11 +159,13 @@ export const mockStories: Story[] = [
   {
     id: "story5",
     restaurantName: "Sushi Express",
+    basePrice: 15.99,
     media: [
       {
         id: "media9",
         type: "image",
         url: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800",
+        dishName: "Salmon Roll",
         hotspots: [
           { id: "1", ingredientId: "ing5", x: 40, y: 45 },
           { id: "2", ingredientId: "ing3", x: 65, y: 55 },
@@ -162,12 +175,14 @@ export const mockStories: Story[] = [
         id: "media10",
         type: "image",
         url: "https://images.unsplash.com/photo-1579584425555-c3ce17fd4351?w=800",
+        dishName: "Tuna Roll",
         hotspots: [{ id: "1", ingredientId: "ing2", x: 45, y: 50 }],
       },
       {
         id: "media11",
         type: "image",
         url: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800",
+        dishName: "California Roll",
         hotspots: [
           { id: "1", ingredientId: "ing1", x: 35, y: 60 },
           { id: "2", ingredientId: "ing4", x: 55, y: 45 },
