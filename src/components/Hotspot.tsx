@@ -14,7 +14,10 @@ export const Hotspot: React.FC<HotspotProps> = ({ x, y, onClick }) => {
         left: `${x}%`,
         top: `${y}%`,
       }}
-      onClick={onClick}
+      onClick={(e) => {
+        e.stopPropagation();
+        onClick();
+      }}
       aria-label="Ingredient hotspot"
     >
       <span className="absolute inset-0 rounded-full bg-white/50 animate-pulse" />

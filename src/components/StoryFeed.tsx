@@ -1,12 +1,16 @@
 import React, { useState } from "react";
-import { Story } from "@/types";
+import { Story, Ingredient } from "@/types";
 import { StoryViewer } from "./StoryViewer";
 
 interface StoryFeedProps {
   stories: Story[];
+  ingredients: Record<string, Ingredient>;
 }
 
-export const StoryFeed: React.FC<StoryFeedProps> = ({ stories }) => {
+export const StoryFeed: React.FC<StoryFeedProps> = ({
+  stories,
+  ingredients,
+}) => {
   const [currentStoryIndex, setCurrentStoryIndex] = useState(0);
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
 
@@ -53,6 +57,7 @@ export const StoryFeed: React.FC<StoryFeedProps> = ({ stories }) => {
       <StoryViewer
         key={stories[currentStoryIndex].id}
         story={stories[currentStoryIndex]}
+        ingredients={ingredients}
       />
     </div>
   );

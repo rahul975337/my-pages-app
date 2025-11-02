@@ -1,20 +1,29 @@
 import React, { useState, useEffect } from "react";
-import { Story } from "@/types";
+import { Story, Ingredient } from "@/types";
 import { ProgressIndicator } from "@/components/ProgressIndicator";
 import { DishStoryImage } from "@/components/DishStoryImage";
 import { DishStoryVideo } from "@/components/DishStoryVideo";
 import { Hotspot } from "@/components/Hotspot";
+import { IngredientCard } from "@/components/IngredientCard";
 
 const IMAGE_DURATION = 5000;
 
 interface StoryViewerProps {
   story: Story;
+  ingredients: Record<string, Ingredient>;
 }
 
-export const StoryViewer: React.FC<StoryViewerProps> = ({ story }) => {
+export const StoryViewer: React.FC<StoryViewerProps> = ({
+  story,
+  ingredients,
+}) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [videoDuration, setVideoDuration] = useState<number | null>(null);
+  const [selectedIngredientId, setSelectedIngredientId] = useState<
+    string | null
+  >(null);
+  const [isPaused, setIsPaused] = useState(false);
 
   const currentMedia = story.media[currentImageIndex];
 
@@ -22,6 +31,8 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({ story }) => {
     setCurrentImageIndex(0);
     setProgress(0);
     setVideoDuration(null);
+    setSelectedIngredientId(null);
+    setIsPaused(false);
   }, [story.id]);
 
   useEffect(() => {
@@ -31,7 +42,7 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({ story }) => {
   }, [currentImageIndex, story.media.length, currentMedia]);
 
   useEffect(() => {
-    if (!currentMedia) return;
+    if (!currentMedia || isPaused) return;
 
     if (currentMedia.type === "video" && videoDuration === null) {
       return;
@@ -63,7 +74,13 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({ story }) => {
       clearInterval(interval);
       clearTimeout(timeout);
     };
-  }, [currentMedia, videoDuration, currentImageIndex, story.media.length]);
+  }, [
+    currentMedia,
+    videoDuration,
+    currentImageIndex,
+    story.media.length,
+    isPaused,
+  ]);
 
   const handleNext = () => {
     if (currentImageIndex < story.media.length - 1) {
@@ -77,9 +94,14 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({ story }) => {
     }
   };
 
-  const handleHotspotClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    console.log("Hotspot clicked");
+  const handleHotspotClick = (ingredientId: string) => {
+    setSelectedIngredientId(ingredientId);
+    setIsPaused(true);
+  };
+
+  const handleCloseCard = () => {
+    setSelectedIngredientId(null);
+    setIsPaused(false);
   };
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -128,9 +150,16 @@ export const StoryViewer: React.FC<StoryViewerProps> = ({ story }) => {
           key={hotspot.id}
           x={hotspot.x}
           y={hotspot.y}
-          onClick={handleHotspotClick}
+          onClick={() => handleHotspotClick(hotspot.ingredientId)}
         />
       ))}
+
+      {selectedIngredientId && ingredients[selectedIngredientId] && (
+        <IngredientCard
+          ingredient={ingredients[selectedIngredientId]}
+          onClose={handleCloseCard}
+        />
+      )}
     </div>
   );
 };
